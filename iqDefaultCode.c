@@ -75,7 +75,7 @@
 // Save config data
 // Uncomment
 // this line to allow non-volatile storage
-#include "iqSettingsEeprom.c" // using EEPROM, saved when robot powered off
+//#include "iqSettingsEeprom.c" // using EEPROM, saved when robot powered off
 
 #include "iqSettingsSram.c"   // using RAM, not saved when robot powered off
 

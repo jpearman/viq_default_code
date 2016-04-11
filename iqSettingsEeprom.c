@@ -131,7 +131,7 @@ bool
 iqSettingsIntegrityCheck()
 {
 #if !defined(_Target_Emulator_)
-    unsigned long *p;
+    long *p;
     int  i;
     bool fail = false;
 
@@ -141,11 +141,12 @@ iqSettingsIntegrityCheck()
     p = (unsigned long *)(eepromPtr+EEPROM_RDWRI_REG);
 
     // ignore first location, we may have written bad data
-    *p++;
+    unsigned long tmp = *p; tmp = tmp;
 
-    // all other locations should be oxFF
+    // all other locations should be 0xFF
+    // ROBOTC does not support unsigned long so we use -1
     for(i=0;i<8;i++) {
-      if( *p != 0xFFFFFFFF )
+      if( *p != -1 )
         fail = true;
     }
     return( !fail );
